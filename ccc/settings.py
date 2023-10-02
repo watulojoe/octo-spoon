@@ -128,6 +128,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# production-local settings
+try:
+    from .local_settings import *
+except ImportError:
+    print('no local file. You must be live')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
