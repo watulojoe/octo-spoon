@@ -1,6 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import ContactInfo
+from .forms import ContactInfoForm
 
 
 # from django.db import connection, reset_queries
@@ -16,4 +17,16 @@ def home(request):
     the_data = ContactInfo.objects.order_by("facility_name")
     context = {'the_data':the_data}
     return render(request, "data.html", context)
+
+def create_contact(request):
+    if request.method == "POST":
+        form = ContactInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+        else:
+            return render(request, "create_contact.html", {"error":"bad data"})
+    else:
+        context = {"form": ContactInfoForm()}
+        return render(request, "create_contact.html", context)
 
