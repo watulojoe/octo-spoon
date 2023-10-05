@@ -9,6 +9,11 @@
   <body>
     <div class="container">
         <h1>Data</h1>
+	<form method="post">
+          {% csrf_token %}
+          <input type="text" name="query_search" placeholder="search">
+          <button type="submit">save</button>
+        </form>
         <table class="table">
             <thead>
               <tr>
