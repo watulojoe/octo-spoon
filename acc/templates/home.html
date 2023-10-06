@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>home</title>
+{% endblock title %}
+
+
+{% block content %}
+<header class="header">
+    <div class="my-container">
+        <div class="cont">
+            <h1>CCC Contact Info</h1>
+            <p>create an account to view all the useful data that you might require. Very easy steps.</p>
+            <div class="btns">
+                {% if user.is_authenticated %}
+                <button class="btn">
+                    <a href="{% url 'data' %}">data</a>
+                </button>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+                
+                {% else %}
+                <button class="btn">
+                    <a href="{% url 'signup' %}">signup</a>
+                </button>
+                <button class="btn">
+                    <a href="{% url 'login' %}">login</a>
+                </button>
+                {% endif %}
+            </div>
+        </div>
+        <img src="{% static 'img/woman.jpg' %}" alt="">
+    </div>
+</header>
+{% endblock content %}

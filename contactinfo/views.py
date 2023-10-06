@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from .models import ContactInfo
 from .forms import ContactInfoForm
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 
 # from django.db import connection, reset_queries
@@ -15,7 +16,9 @@ from django.db.models import Q
 #     return HttpResponse("done")
 
 
-def home(request):
+@login_required
+
+def data(request):
     if request.method == "POST":
         query = request.POST['query_search']
         # the_data = ContactInfo.objects.filter(facility_name__contains=query)    #  or search multiple field:
@@ -29,6 +32,7 @@ def home(request):
         return render(request, "data.html", context)
 
 
+@login_required
 def create_contact(request):
     if request.method == "POST":
         form = ContactInfoForm(request.POST)

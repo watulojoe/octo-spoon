@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Signup</title>
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="my-form-container">
+    <div class="form-container">
+        <h2>Signup</h2>
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        <form class="form" action="" method="post">
+            {% csrf_token %}
+            <div class="form-items">
+                <label for="">username</label>
+                <input type="text" name="username" id="">
+            </div>
+            <div class="form-items">
+                <label for="">Email</label>
+                <input type="email" name="email" id="">
+            </div>
+            <div class="form-items">
+                <label for="">password</label>
+                <input type="password" name="password1" id="">
+            </div>
+            <div class="form-items">
+                <label for="">Confirm password</label>
+                <input type="password" name="password2" id="">
+            </div>
+            <button type="submit">submit</button>
+            <br>
+            <div class="text-center">
+                Do you already have an account? <a href="{% url 'login' %}">Login here</a>
+            </div>
+        </form>
+    </div>
+ </div>
+{% endblock content %}
+

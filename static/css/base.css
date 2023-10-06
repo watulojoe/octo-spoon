@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: rgb(240, 214, 165);
+}
+
+
+
+
+@media (max-width: 768px) {
+    .header .my-container {
+        flex-direction: column;
+    }
+}
+
+

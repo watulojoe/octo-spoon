@@ -20,6 +20,6 @@ from contactinfo import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("contactinfo.urls"))
-
+    path("data/", include("contactinfo.urls")),
+    path("", include("acc.urls")),
 ]
